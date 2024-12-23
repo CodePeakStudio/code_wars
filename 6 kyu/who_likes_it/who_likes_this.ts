@@ -1,19 +1,15 @@
 export const likes = (a: string[]): string => {
-    // if (a.length === 0) {
-    //     return 'no one likes this';
-    // }
-    // let result = a.reduce((result: string, val: string, idx: number, array: string[]) => {
-    //     if (array.length == 1) {
-    //         result += val;
-    //     } else {
-    //         if (idx < 3) {
-    //             result += (result == '') ? `${val}` : ` and ${val}`
-    //         }
-    //     }
-    //     return result;
-    // }, "");
-    // return `${result} ${a.length === 1 ? 'likes this' : a.length < 4 ? 'like this' : 'tralalala'}`
-    return a.join(',');
+    if (a.length === 0) {
+        return 'no one likes this';
+    } else if (a.length === 1) {
+        return `${a[0]} likes this`;
+    } else if (a.length === 2) {
+        return `${a.join(' and ')} like this`;
+    } else if (a.length === 3) {
+        return `${a.slice(0, 2).join(', ')} and ${a.slice(2).join(', ')} like this`;
+    } else {
+        return `${a.slice(0, 2).join(', ')} and ${a.length - 2} others like this`;
+    }
 }
 
 console.log(likes([]));
